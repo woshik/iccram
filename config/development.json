@@ -1,0 +1,8 @@
+{
+	"name": "ICCRAM",
+	"PORT": 3000,
+	"session_secret": "hufasiudhfiuaba98ef98jsudvahrouifoiasjdoifjas",
+	"cookie_secret": "bhiahvyahuh;]f[a;sdfaisjrufh473gf8gsyfugsud",
+	"database_connection_string": "mongodb://localhost:27017/iccram",
+	"database_name": "iccram"
+}

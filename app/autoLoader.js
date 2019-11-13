@@ -1,0 +1,1 @@
+global.web = require(join(BASE_DIR, 'urlconf', 'webRule'))

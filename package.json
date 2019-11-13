@@ -1,0 +1,49 @@
+{
+  "name": "iccram",
+  "version": "1.0.0",
+  "description": "kuet iccram conference website",
+  "main": "index.js",
+  "scripts": {
+    "start": "export NODE_ENV=development && node index.js",
+    "server": "export NODE_ENV=production && node index.js",
+    "watch": "export NODE_ENV=development && nodemon index.js",
+    "pm2": "export NODE_ENV=production && pm2 start index.js"
+  },
+  "engines": {
+    "node": "12.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woshik/iccram.git"
+  },
+  "keywords": [
+    "kuet",
+    "conference",
+    "kuet",
+    "conference",
+    "conference",
+    "website"
+  ],
+  "author": "Hyper Queue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woshik/iccram/issues"
+  },
+  "homepage": "https://github.com/woshik/iccram#readme",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "config": "^3.2.4",
+    "csurf": "^1.10.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "mongodb": "^3.3.4",
+    "nodemailer": "^6.3.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.1"
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"name": "ICCRAM",
+	"PORT": 5000,
+	"session_secret": "hufasiudhfiuaba98ef98jsudvahrouifoiasjdoifjas",
+	"cookie_secret": "bhiahvyahuh;]f[a;sdfaisjrufh473gf8gsyfugsud",
+	"database_connection_string": "mongodb://localhost:27017/iccram",
+	"database_name": "iccram",
+	"ssl": {
+		"cert": "/etc/letsencrypt/live/iccram.com/cert.pem",
+		"chain": "/etc/letsencrypt/live/iccram.com/chain.pem",
+		"privkey": "/etc/letsencrypt/live/iccram.com/privkey.pem"
+	}
+}
