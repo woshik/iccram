@@ -1,16 +1,4 @@
-exports.isUserAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        if (!!req.user.super_user) {
-            res.redirect(web.adminDashboard.url)
-        } else {
-            next()
-        }
-    } else {
-        res.redirect(web.userLogin.url)
-    }
-}
-
-exports.isUserCanSee = (req, res, next) => {
+exports.CanSee = (req, res, next) => {
     if (req.isAuthenticated()) {
         res.redirect(web.userDashboard.url)
     } else {
@@ -18,18 +6,10 @@ exports.isUserCanSee = (req, res, next) => {
     }
 }
 
-exports.canAccess = (req, res, next) => {
-    if (req.isAuthenticated() && req.user.active) {
+exports.isAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
         next()
     } else {
-        res.redirect(web.userDashboard.url)
-    }
-}
-
-exports.isSuperUser = (req, res, next) => {
-    if (req.isAuthenticated() && req.user.super_user) {
-        next()
-    } else {
-        res.redirect(web.adminLogin.url)
+        res.redirect(web.login.url)
     }
 }

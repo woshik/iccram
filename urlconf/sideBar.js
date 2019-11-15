@@ -1,22 +1,12 @@
 module.exports = {
 	dashboard : {
 		title: 'Dashboard',
-		url: web.userDashboard.url,
+		url: web.dashboard.url,
 		icon: '<i class="fas fa-th-large"></i>'
 	},
-	appInstall : {
+	regList : {
 		title: 'Install App',
-		url: web.appInstall.url,
-		icon: '<i class="fas fa-arrow-alt-circle-down"></i>'
-	},
-	appList : {
-		title: 'App List',
-		url: web.appList.url,
+		url: web.regList.url,
 		icon: '<i class="fas fa-list-ul"></i>'
-	},
-	generateApplication: {
-		title: 'Application Generator',
-		url: web.applicationGenerator.url,
-		icon: '<i class="fas fa-file-pdf"></i>'
 	}
 }

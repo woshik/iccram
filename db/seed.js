@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
 const { join } = require('path')
 
-MongoClient.connect('mongodb://localhost:27017/appgenbd', { useNewUrlParser: true, useUnifiedTopology: true })
+MongoClient.connect('mongodb://localhost:27017/iccram', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(client => {
         let username = crypto.randomBytes(5).toString('hex') + '@yourmail.com'
         let password = crypto.randomBytes(8).toString('hex')
@@ -12,9 +12,9 @@ MongoClient.connect('mongodb://localhost:27017/appgenbd', { useNewUrlParser: tru
             .then(getSalt => {
                 bcrypt.hash(password, getSalt)
                     .then(hashPassword => {
-                        client.db('appgenbd').createCollection('admin')
+                        client.db('iccram').createCollection('admin')
                             .then(result => {
-                                result.insertOne({ email: username, password: hashPassword, super_user: true })
+                                result.insertOne({ email: username, password: hashPassword })
                                     .then(result => {
                                         console.log(`username: ${username}`)
                                         console.log(`password: ${password}`)

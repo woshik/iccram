@@ -1,37 +1,25 @@
 const { hashPassword } = require(join(BASE_DIR, 'core', 'util'))
+const model = require(join(BASE_DIR, 'db', 'model'))
 
 exports.dashboardView = (req, res, next) => {
+    const reg = new model('registration')
+    reg.find({}, { _id: 1 })
+        .then(result => {
+            let dashboardData = {
+                title: 'Admin',
+                email: req.user.email,
+                regCount: result.length
+            }
 
-    let dashboardData = {
-        info: commonInfo,
-        title: 'Admin',
-        email: req.user.email,
-        maxAppCanInstall: '',
-        costPerMonth: '',
-        appSettingId: '',
-        csrfToken: req.csrfToken(),
-        userList: web.userList.url,
-        userPayment: web.payment.url,
-        userAccountStatusChange: web.accountStatusChange.url,
-        userAccountDelete: web.accountDelete.url,
-        appSetting: web.appSetting.url,
-        profileSetting: web.profileSetting.url,
-        maxAppInstallUrl: web.userMaxAppInstall.url,   
-    }
-
-    if (req.user.setting) {
-        dashboardData.appSettingId = req.user.setting._id
-        dashboardData.maxAppCanInstall = req.user.setting.max_app
-        dashboardData.costPerMonth = req.user.setting.cost_per_month
-    }
-
-    res.render("admin/dashboard", dashboardData)
+            res.render("admin/dashboard", dashboardData)
+        })
+        .catch(err => next(err))
 }
 
 exports.adminLogout = (req, res) => {
     req.logout()
-    req.flash('adminLoginScreenSuccessMessage', 'Successfully Logout')
-    res.redirect(web.adminLogin.url)
+    req.flash('successMessage', 'Successfully Logout')
+    res.redirect(web.login.url)
 }
 
 exports.profileSetting = (req, res, next) => {
@@ -57,7 +45,7 @@ exports.profileSetting = (req, res, next) => {
     hashPassword(validateResult.value.password)
         .then(passwordHashed => {
             let adminInfo = {
-                'email' : validateResult.value.email,
+                'email': validateResult.value.email,
                 'password': passwordHashed,
             }
 
