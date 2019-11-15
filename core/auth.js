@@ -29,7 +29,7 @@ module.exports = (app) => {
 
     passport.deserializeUser((id, done) => {
         let user = new model('admin')
-        user.findOne({ _id: ObjectId(id) }, { email: 1, })
+        user.findOne({ _id: ObjectId(id) }, { email: 1 })
             .then(async userData => {
                 if (!userData) {
                     return done(null, false)
