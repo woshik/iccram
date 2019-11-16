@@ -6,8 +6,8 @@
 	"database_connection_string": "mongodb://localhost:27017/iccram",
 	"database_name": "iccram",
 	"ssl": {
-		"cert": "/etc/letsencrypt/live/iccram.com/cert.pem",
-		"chain": "/etc/letsencrypt/live/iccram.com/chain.pem",
-		"privkey": "/etc/letsencrypt/live/iccram.com/privkey.pem"
+		"cert": "/etc/letsencrypt/live/iccram.info/cert.pem",
+		"chain": "/etc/letsencrypt/live/iccram.info/chain.pem",
+		"privkey": "/etc/letsencrypt/live/iccram.info/privkey.pem"
 	}
 }
