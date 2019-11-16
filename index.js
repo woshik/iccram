@@ -1,23 +1,20 @@
 const cluster = require("cluster")
 
 if (cluster.isMaster) {
-    let env = "development"
-    if (process.env.NODE_ENV === "production") {
-        env = "production"
-        cluster.on('exit', (worker) => {
-            cluster.fork({
-                NODE_ENV: env
-            })
-        })
-    }
-
     let numCPUs = require('os').cpus().length
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork({
-            NODE_ENV: env
+            NODE_ENV: "production"
         })
     }
 
+    if (process.env.NODE_ENV === "production") {
+        cluster.on('exit', (worker) => {
+            cluster.fork({
+                NODE_ENV: "production"
+            })
+        })
+    }
 } else {
     //global declaration
     global.join = require("path").join;
