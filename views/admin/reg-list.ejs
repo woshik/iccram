@@ -1,0 +1,52 @@
+<%- include('base/base_header.ejs') %>
+<section class="tables-section">
+    <div class="outer-w3-agile mt-3">
+        <h4 class="tittle-w3-agileits mb-4">
+            <%=title%>
+        </h4>
+        <div id="app-list-message"></div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped" id="reg-list" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Profession</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Registration Time</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+<%- include('base/base_footer.ejs') %>
+<script type="text/javascript" src="/dashboard/DataTables/datatables.min.js"></script>
+<script type="text/javascript">
+var appList;
+$(document).ready(function() {
+    appList = $('#reg-list').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            url: "<%=regListURL%>",
+            headers: {
+                'CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            type: "POST"
+        },
+        "columnDefs": [{
+            "targets": [7],
+            "orderable": false
+        }],
+        "lengthMenu": [
+            [10, 25, 50, 75, 100, 200],
+            [10, 25, 50, 75, 100, 200]
+        ],
+    })
+})
+</script>
+<%- include('base/close_footer.ejs') %>

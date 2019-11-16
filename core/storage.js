@@ -3,7 +3,7 @@ const session = require("express-session")
 const MongoStore = require("connect-mongo")(session)
 const cookieParser = require("cookie-parser")
 
-exports.sessionStore = (app, opt) => {
+exports.sessionStore = (app) => {
     app.use(session({
         secret: config.get("secret_key"),
         resave: false,
@@ -17,7 +17,7 @@ exports.sessionStore = (app, opt) => {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             }
-        })
+        }),
     }))
 }
 

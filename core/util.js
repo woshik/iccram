@@ -97,24 +97,3 @@ exports.logger = createLogger({
         }),
     ]
 })
-
-exports.flash = () => {
-    return function(req, res, next) {
-        if (req.flash) return next()
-        req.flash = function(type, msg) {
-            if ( typeof this.cookies === "undefined") throw Error('req.flash() requires cookies');
-            let msgs = this.cookies.flash ;
-            if (type && msg) {
-                return msgs[type] = msg;
-            } else if (type) {
-                let arr = msgs[type];
-                delete msgs[type];
-                return arr || false;
-            } else {
-                this.session.flash = {};
-                return msgs;
-            }
-        }
-        next();
-    }
-}

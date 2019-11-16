@@ -1,14 +1,12 @@
 const passport = require("passport")
 const Joi = require('@hapi/joi')
-const {fromErrorMessage} = require(join(BASE_DIR, 'core', 'util'))
+const { fromErrorMessage } = require(join(BASE_DIR, 'core', 'util'))
 
 exports.loginView = (req, res) => {
     res.render("auth/login", {
         title: "Admin Login",
         csrfToken: req.csrfToken(),
         loginForm: web.login.url,
-        successMessage: req.flash('successMessage'),
-        errorMessage: req.flash('errorMessage')
     })
 }
 
@@ -38,7 +36,6 @@ exports.login = (req, res, next) => {
                 message: info.message
             })
         }
-        
         req.login(user, (err) => {
             if (!!err) next(err)
             return res.status(200).json({

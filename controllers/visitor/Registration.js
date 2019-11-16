@@ -1,4 +1,6 @@
 const Joi = require('@hapi/joi')
+const Entities = require('html-entities').AllHtmlEntities
+const dateTime = require('date-and-time')
 const { fromErrorMessage } = require(join(BASE_DIR, 'core', 'util'))
 
 exports.registrationView = (req, res, next) => {
@@ -12,6 +14,7 @@ exports.registrationView = (req, res, next) => {
 }
 
 exports.registration = (req, res, next) => {
+
     const schema = Joi.object({
         name: Joi.string().trim().required().label("Name"),
         email: Joi.string().trim().email().required().label("Email address"),
@@ -43,17 +46,19 @@ exports.registration = (req, res, next) => {
         })
     }
 
+    const entities = new Entities()
     const reg = new model('registration')
     reg.save({
-            name: validateResult.value.name,
-            email: validateResult.value.email,
-            profession: validateResult.value.profession,
-            designation: validateResult.value.designation,
-            mobile: validateResult.value.mobile,
-            institute: validateResult.value.institute,
-            department: validateResult.value.department,
-            title: validateResult.value.title,
-            abstract: validateResult.value.abstract,
+            name: entities.encode(validateResult.value.name),
+            email: entities.encode(validateResult.value.email),
+            profession: entities.encode(validateResult.value.profession),
+            designation: entities.encode(validateResult.value.designation),
+            mobile: entities.encode(validateResult.value.mobile),
+            institute: entities.encode(validateResult.value.institute),
+            department: entities.encode(validateResult.value.department),
+            title: entities.encode(validateResult.value.title),
+            abstract: entities.encode(validateResult.value.abstract),
+            registration_time: dateTime.format(dateTime.addHours(new Date(), 6), "DD-MM-YYYY hh:mm:ss A")
         })
         .then(dataInsectionResult => {
             if (dataInsectionResult.insertedCount !== 1) {

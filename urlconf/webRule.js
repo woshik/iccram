@@ -47,10 +47,30 @@ module.exports = {
     },
 
     dashboard: {
-        url: '/dashboard',
+        url: '/admin',
         controller: 'Dashboard',
         methods: {
             dashboardView: 'get',
+        },
+        middleware: [isAuthenticated],
+        path: 'admin'
+    },
+
+    setting: {
+        url: '/profile-setting',
+        controller: 'Dashboard',
+        methods: {
+            profileSetting: 'post',
+        },
+        middleware: [isAuthenticated],
+        path: 'admin'
+    },
+
+    logout: {
+        url: '/logout',
+        controller: 'Dashboard',
+        methods: {
+            logout: 'get',
         },
         middleware: [isAuthenticated],
         path: 'admin'
