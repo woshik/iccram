@@ -102,8 +102,8 @@ exports.flash = () => {
     return function(req, res, next) {
         if (req.flash) return next()
         req.flash = function(type, msg) {
-            if (this.session === undefined) throw Error('req.flash() requires sessions');
-            let msgs = this.session.flash = this.session.flash || {};
+            if ( typeof this.cookies === "undefined") throw Error('req.flash() requires cookies');
+            let msgs = this.cookies.flash ;
             if (type && msg) {
                 return msgs[type] = msg;
             } else if (type) {

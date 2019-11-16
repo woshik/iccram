@@ -12,6 +12,8 @@
 
 /* ***** [Fonts: Popins + Playfair Display] ***** */
 
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Poppins:300,400,500,600,700');
+
 /* ***** Import All CSS ***** */
 
 @import 'css/bootstrap/bootstrap.min.css';
@@ -186,6 +188,11 @@ li {
     padding-bottom: 100px;
 }
 
+.section-padding-150 {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
 .section-padding-100-70 {
     padding-top: 100px;
     padding-bottom: 70px;
@@ -245,6 +252,9 @@ li {
 #scrollUp:hover {
     background-color: #7450fe;
 }
+.logoDesign{
+    width: 200px;
+}
 
 .section-heading {
     position: relative;
@@ -255,6 +265,7 @@ li {
 .section-heading h2 {
     margin-bottom: 15px;
     font-size: 38px;
+    text-align: center;
 }
 
 .section-heading.heading-white h2,
@@ -594,6 +605,7 @@ li {
 .about-us-text > h2 {
     font-size: 38px;
     margin-bottom: 25px;
+    text-align: center;
 }
 
 .about-us-text > p {
@@ -602,6 +614,7 @@ li {
 
 .about-us-text > p:last-of-type {
     margin-bottom: 35px;
+    text-align: justify;
 }
 
 .about-us-thumb > img {
@@ -809,6 +822,7 @@ li {
     z-index: 1;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
+    height: 100%;
 }
 
 .single-blog-area:hover {
@@ -1197,4 +1211,18 @@ li {
 .tags-widget > a:hover {
     background-color: #7450fe;
     color: #fff;
+}
+
+.section-heading .order-list li{
+    list-style-type: disc;
+}
+
+.single-top-feature i {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+.single-blog-area .blog-content ol li {
+    list-style-type: disc;
 }
