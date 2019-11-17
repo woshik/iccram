@@ -1,3 +1,5 @@
+"use strict";
+
 const winstonDailyRotateFile = require('winston-daily-rotate-file')
 const { createLogger, format, transports } = require('winston')
 const { align, combine, timestamp, printf } = format

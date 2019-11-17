@@ -1,3 +1,5 @@
+"use strict";
+
 exports.homeView = (req, res, next) => {
     res.render("visitor/home", {
         title: 'Home',

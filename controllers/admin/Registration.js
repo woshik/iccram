@@ -1,3 +1,5 @@
+"use strict";
+
 exports.regListView = (req, res, next) => {
     res.render("admin/reg-list", {
         title: 'Registration List',

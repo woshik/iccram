@@ -1,3 +1,5 @@
+"use strict";
+
 exports.committeeView = (req, res, next) => {
     res.render("visitor/committee", {
         title: 'Committee',

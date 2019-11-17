@@ -1,3 +1,5 @@
+"use strict";
+
 const passport = require("passport")
 const Joi = require('@hapi/joi')
 const { fromErrorMessage } = require(join(BASE_DIR, 'core', 'util'))

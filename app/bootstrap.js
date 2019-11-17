@@ -1,3 +1,5 @@
+"use strict";
+
 // import other usefull modules
 const http = require('http')
 const https = require('https')

@@ -1,3 +1,5 @@
+"use strict";
+
 const MongoClient = require('mongodb').MongoClient;
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')

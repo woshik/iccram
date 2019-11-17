@@ -1,3 +1,5 @@
+"use strict";
+
 exports.CanSee = (req, res, next) => {
     if (req.isAuthenticated()) {
         res.redirect(web.dashboard.url)

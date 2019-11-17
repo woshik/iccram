@@ -1,3 +1,5 @@
+"use strict";
+
 const { CanSee, isAuthenticated } = require(join(BASE_DIR, "core", "middlewares"))
 
 module.exports = {

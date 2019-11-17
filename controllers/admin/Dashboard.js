@@ -1,3 +1,5 @@
+"use strict";
+
 const Joi = require('@hapi/joi')
 const { hashPassword, fromErrorMessage } = require(join(BASE_DIR, 'core', 'util'))
 const model = require(join(BASE_DIR, 'db', 'model'))

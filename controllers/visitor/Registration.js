@@ -1,3 +1,5 @@
+"use strict";
+
 const Joi = require('@hapi/joi')
 const Entities = require('html-entities').AllHtmlEntities
 const dateTime = require('date-and-time')
