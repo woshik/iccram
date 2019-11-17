@@ -87,5 +87,25 @@ module.exports = {
         },
         middleware: [isAuthenticated],
         path: 'admin'
-    }
+    },
+
+    regShow: {
+        url: '/registration-show',
+        controller: 'Registration',
+        methods: {
+            regShow: 'get'
+        },
+        middleware: [isAuthenticated],
+        path: 'admin'
+    },
+
+    regDelete: {
+        url: '/registration-delete',
+        controller: 'Registration',
+        methods: {
+            regDelete: 'post'
+        },
+        middleware: [isAuthenticated],
+        path: 'admin'
+    },
 }

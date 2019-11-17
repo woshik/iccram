@@ -4,7 +4,7 @@
         <h4 class="tittle-w3-agileits mb-4">
             <%=title%>
         </h4>
-        <div id="app-list-message"></div>
+        <div id="reg-list-message"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped" id="reg-list" style="width:100%;">
                 <thead>
@@ -12,6 +12,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Mobile</th>
+                        <th scope="col">Institute</th>
+                        <th scope="col">Department</th>
                         <th scope="col">Profession</th>
                         <th scope="col">Designation</th>
                         <th scope="col">Title</th>
@@ -26,9 +28,10 @@
 <%- include('base/base_footer.ejs') %>
 <script type="text/javascript" src="/dashboard/DataTables/datatables.min.js"></script>
 <script type="text/javascript">
-var appList;
+var regList, timeOut;
 $(document).ready(function() {
-    appList = $('#reg-list').DataTable({
+    $("#reg-list-message").fadeOut(0)
+    regList = $('#reg-list').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -43,10 +46,76 @@ $(document).ready(function() {
             "orderable": false
         }],
         "lengthMenu": [
-            [10, 25, 50, 75, 100, 200],
-            [10, 25, 50, 75, 100, 200]
+            [5, 10, 25, 50, 75, 100, 200],
+            [5, 10, 25, 50, 75, 100, 200]
         ],
     })
 })
+
+function regDelete(id) {
+    if (id) {
+        $("#regDeleteButton").unbind("click").bind("click", function() {
+            $.ajax({
+                url: "<%=regDeleteURL%>",
+                type: "POST",
+                headers: {
+                    'CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                data: {
+                    'id': id,
+                },
+                dataType: "json",
+                success: function(res) {
+                    if (res.success === true) {
+                        $("#reg-list-message").html('<div class="alert alert-success alert-dismissible" role="alert">' +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                            res.message +
+                            '</div>').fadeIn(1000)
+                        regList.ajax.reload(null, false)
+
+                    } else {
+                        $("#reg-list-message").html('<div class="alert alert-warning alert-dismissible" role="alert">' +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                            res.message +
+                            '</div>').fadeIn(1000)
+                    }
+
+                    $('#regDelete').modal('hide')
+
+                    clearTimeout(timeOut)
+                    timeOut = setTimeout(function() {
+                        $("#reg-list-message").fadeOut(1000)
+                    }, 5000)
+                }
+            })
+        })
+    }
+}
+
+function regShow(id) {
+    if (id) {
+        $.ajax({
+            url: "<%=regShowURL%>",
+            type: "GET",
+            data: {
+                'id': id,
+            },
+            dataType: "json",
+            success: function(res) {
+                if (res.success) {
+                    $("#reg-name").val(res.info.name)
+                    $("#reg-email").val(res.info.email)
+                    $("#reg-mobile").val(res.info.mobile)
+                    $("#reg-profession").val(res.info.profession)
+                    $("#reg-designation").val(res.info.designation)
+                    $("#reg-institute").val(res.info.institute)
+                    $("#reg-department").val(res.info.department)
+                    $("#reg-title").val(res.info.title)
+                    $("#reg-abstract").val(res.info.abstract)
+                }
+            }
+        })
+    }
+}
 </script>
 <%- include('base/close_footer.ejs') %>
