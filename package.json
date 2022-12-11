@@ -42,7 +42,7 @@
     "csurf": "^1.10.0",
     "date-and-time": "^0.10.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
     "html-entities": "^1.2.1",
