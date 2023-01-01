@@ -36,7 +36,7 @@
     "@hapi/joi": "^16.1.7",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
-    "config": "^3.2.4",
+    "config": "^3.3.8",
     "connect-mongo": "^3.1.2",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
